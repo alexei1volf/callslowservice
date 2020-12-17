@@ -1,0 +1,20 @@
+package com.example.callslowservice;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/AggregatedData", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequiredArgsConstructor
+public class AggregatedDataController {
+
+    private final AggregatedDataService aggregatedDataService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public AggregatedDataDto getAggregatedData() {
+        return aggregatedDataService.getAggregatedData();
+    }
+}
