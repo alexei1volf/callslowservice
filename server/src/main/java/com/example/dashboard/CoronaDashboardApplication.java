@@ -1,13 +1,13 @@
-package com.example.callslowservice;
+package com.example.dashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CallSlowServiceApplication {
+public class CoronaDashboardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CallSlowServiceApplication.class, args);
+		SpringApplication.run(CoronaDashboardApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.example.callslowservice;
+package com.example.provider;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/AggregatedData", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/corona-summary", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
-public class AggregatedDataController {
+public class CoronaSummaryController {
 
-    private final AggregatedDataService aggregatedDataService;
+    private final CoronaSummaryService coronaDashboardService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public AggregatedDataDto getAggregatedData() {
-        return aggregatedDataService.getAggregatedData();
+    public CoronaSummaryDto getCoronaDashboardData() {
+        return coronaDashboardService.getCoronaSummary();
     }
 }
