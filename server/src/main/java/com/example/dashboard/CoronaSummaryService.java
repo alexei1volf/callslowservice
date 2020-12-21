@@ -9,7 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class CoronaSummaryService {
 
-    @Cacheable(value = "summary")
+    @Cacheable(value = "summary", sync = true)
     public CoronaSummaryDto getCoronaSummary() {
         String uriString = UriComponentsBuilder.newInstance()
                 .scheme("http")
