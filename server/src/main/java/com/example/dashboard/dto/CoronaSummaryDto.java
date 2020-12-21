@@ -6,4 +6,5 @@ import lombok.Data;
 public class CoronaSummaryDto {
     private Integer confirmedCases;
     private Integer deaths;
+    private Boolean success;
 }
