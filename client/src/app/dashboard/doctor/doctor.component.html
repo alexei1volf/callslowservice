@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Doctor</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Doctors available: {{doctorsAvailable | number:''}}</p>
+    <p>Need to hire: {{((dashboardDto | async)?.confirmedCases / doctorCapacity - doctorsAvailable) | number:''}}</p>
+  </mat-card-content>
+</mat-card>

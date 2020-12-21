@@ -7,12 +7,16 @@ import {VaccineComponent} from './dashboard/vaccine/vaccine.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DoctorComponent} from './dashboard/doctor/doctor.component';
+import {HospitalComponent} from './dashboard/hospital/hospital.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    VaccineComponent
+    VaccineComponent,
+    DoctorComponent,
+    HospitalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Vaccines</mat-card-title>
+    <mat-card-title>Vaccine</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>Vaccines in stock: {{vaccinesInStock}}</p>
-    <p>Need to order: {{(dashboardDto | async)?.confirmedCases - vaccinesInStock}}</p>
+    <p>Vaccines in stock: {{vaccinesInStock | number:''}}</p>
+    <p>Need to order: {{(dashboardDto | async)?.confirmedCases - vaccinesInStock | number:''}}</p>
   </mat-card-content>
 </mat-card>
 

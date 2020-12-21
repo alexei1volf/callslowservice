@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class CoronaSummaryDto {
-    private Long confirmedCases;
-    private Long deaths;
+    private Integer confirmedCases;
+    private Integer deaths;
 }

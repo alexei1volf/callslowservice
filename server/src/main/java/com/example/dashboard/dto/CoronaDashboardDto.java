@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @Builder
 public class CoronaDashboardDto {
-    private Long confirmedCases;
+    private Integer confirmedCases;
 }

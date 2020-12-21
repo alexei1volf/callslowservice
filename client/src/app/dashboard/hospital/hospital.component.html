@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Hospital</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Hospitals available: {{hospitalsAvailable | number:''}}</p>
+    <p>Need to build: {{((dashboardDto | async)?.confirmedCases / hospitalCapacity - hospitalsAvailable) | number:''}}</p>
+  </mat-card-content>
+</mat-card>
