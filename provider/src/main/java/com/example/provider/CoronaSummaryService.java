@@ -3,6 +3,7 @@ package com.example.provider;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class CoronaSummaryService {
     private int successProbability;
 
     @SneakyThrows
-    public CoronaSummaryDto getCoronaSummary() {
+    public Mono<CoronaSummaryDto> getCoronaSummary() {
         Random random = new Random();
 
         int minConfirmedCases = 72_196_732;
@@ -28,10 +29,12 @@ public class CoronaSummaryService {
 
         Thread.sleep(1000);
 
-        return CoronaSummaryDto.builder()
+        CoronaSummaryDto coronaSummary = CoronaSummaryDto.builder()
                 .confirmedCases(confirmedCases)
                 .deaths(deaths)
                 .success(success)
                 .build();
+
+        return Mono.just(coronaSummary);
     }
 }

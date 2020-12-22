@@ -1,7 +1,6 @@
 package com.example.dashboard;
 
 import com.example.dashboard.dto.CoronaDashboardDto;
-import com.example.dashboard.dto.CoronaSummaryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +11,9 @@ public class CoronaDashboardService {
     private final CoronaSummaryService coronaSummaryService;
 
     public CoronaDashboardDto getCoronaDashboardData() {
-        CoronaSummaryDto coronaSummary = coronaSummaryService.getCoronaSummary();
+        coronaSummaryService.getCoronaSummary().subscribe(System.out::println);
         return CoronaDashboardDto.builder()
-                .confirmedCases(coronaSummary.getConfirmedCases())
+                .confirmedCases(1)
                 .build();
     }
 }

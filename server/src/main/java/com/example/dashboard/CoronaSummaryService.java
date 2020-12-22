@@ -1,21 +1,20 @@
 package com.example.dashboard;
 
 import com.example.dashboard.dto.CoronaSummaryDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.publisher.Mono;
 
 @Service
+@RequiredArgsConstructor
 public class CoronaSummaryService {
 
-    public CoronaSummaryDto getCoronaSummary() {
-        String uriString = UriComponentsBuilder.newInstance()
-                .scheme("http")
-                .host("localhost")
-                .port(8090)
-                .path("corona-summary")
-                .build()
-                .toUriString();
-        return new RestTemplate().getForObject(uriString, CoronaSummaryDto.class);
+    private final RSocketRequester requester;
+
+    public Mono<CoronaSummaryDto> getCoronaSummary() {
+        return requester
+                .route("coronaSummary")
+                .retrieveMono(CoronaSummaryDto.class);
     }
 }

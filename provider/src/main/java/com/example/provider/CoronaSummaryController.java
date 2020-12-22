@@ -2,13 +2,11 @@ package com.example.provider;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.stereotype.Controller;
+import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping(value = "/corona-summary", produces = MediaType.APPLICATION_JSON_VALUE)
+@Controller
 @RequiredArgsConstructor
 public class CoronaSummaryController {
 
@@ -19,8 +17,8 @@ public class CoronaSummaryController {
         this.coronaDashboardService = coronaDashboardService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public CoronaSummaryDto getCoronaDashboardData() {
+    @MessageMapping("coronaSummary")
+    public Mono<CoronaSummaryDto> getCoronaDashboardData() {
         return coronaDashboardService.getCoronaSummary();
     }
 }
