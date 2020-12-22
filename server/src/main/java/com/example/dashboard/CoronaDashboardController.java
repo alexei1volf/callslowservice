@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(value = "/corona-dashboard", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -17,7 +18,7 @@ public class CoronaDashboardController {
 
     @RequestMapping(method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:4200")
-    public CoronaDashboardDto getCoronaDashboardData() {
+    public Mono<CoronaDashboardDto> getCoronaDashboardData() {
         return coronaDashboardService.getCoronaDashboardData();
     }
 }
