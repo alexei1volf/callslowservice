@@ -17,7 +17,7 @@ export class HospitalComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
-    this.dashboardDto = this.dashboardService.dashboardDto;
+    this.dashboardDto = this.dashboardService.getDashboardDto();
   }
 
 }

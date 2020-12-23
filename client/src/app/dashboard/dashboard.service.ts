@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {DashboardDto} from './dashboard-dto';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {IdentitySerializer, JsonSerializer, RSocketClient} from 'rsocket-core';
 import RSocketWebSocketClient from 'rsocket-websocket-client';
 
@@ -9,12 +9,12 @@ import RSocketWebSocketClient from 'rsocket-websocket-client';
 })
 export class DashboardService {
 
-  dashboardDto = new Subject<DashboardDto>();
+  private dashboardDto = new Subject<DashboardDto>();
 
   constructor() {
 
     // Create an instance of a client
-    const rSocketClient = new RSocketClient({
+    const rsocketClient = new RSocketClient({
       serializers: {
         data: JsonSerializer,
         metadata: IdentitySerializer
@@ -34,9 +34,8 @@ export class DashboardService {
       }),
     });
 
-
     // Open the connection
-    rSocketClient.connect().subscribe({
+    rsocketClient.connect().subscribe({
       onComplete: socket => {
         // socket provides the rsocket interactions fire/forget, request/response,
         // request/stream, etc as well as methods to close the socket.
@@ -60,7 +59,11 @@ export class DashboardService {
           });
 
       }
-
     });
   }
+
+  getDashboardDto(): Observable<DashboardDto> {
+    return this.dashboardDto.asObservable();
+  }
+
 }
