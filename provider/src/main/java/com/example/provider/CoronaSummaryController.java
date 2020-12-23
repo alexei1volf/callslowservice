@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,7 +18,7 @@ public class CoronaSummaryController {
     }
 
     @MessageMapping("coronaSummary")
-    public Mono<CoronaSummaryDto> getCoronaDashboardData() {
+    public Flux<CoronaSummaryDto> getCoronaDashboardData() {
         return coronaDashboardService.getCoronaSummary();
     }
 }

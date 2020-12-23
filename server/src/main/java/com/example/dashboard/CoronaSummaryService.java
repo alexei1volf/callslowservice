@@ -4,7 +4,7 @@ import com.example.dashboard.dto.CoronaSummaryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @Service
 @RequiredArgsConstructor
@@ -12,9 +12,9 @@ public class CoronaSummaryService {
 
     private final RSocketRequester requester;
 
-    public Mono<CoronaSummaryDto> getCoronaSummary() {
+    public Flux<CoronaSummaryDto> getCoronaSummary() {
         return requester
                 .route("coronaSummary")
-                .retrieveMono(CoronaSummaryDto.class);
+                .retrieveFlux(CoronaSummaryDto.class);
     }
 }

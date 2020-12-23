@@ -16,7 +16,7 @@ export class VaccineComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
-    this.dashboardDto = this.dashboardService.getDashboardData();
+    this.dashboardDto = this.dashboardService.dashboardDto;
   }
 
 }
